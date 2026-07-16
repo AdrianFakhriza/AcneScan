@@ -30,20 +30,18 @@ function App() {
     return new Blob([u8arr], { type: mime });
   };
 ​
-  // Fungsi utama untuk mengirim gambar ke FastAPI backend via Axios
+  // Fungsi mengirim gambar ke FastAPI backend via Axios
   const handleStartAnalysis = async () => {
     if (!selectedImage) return;
 ​
     setIsAnalyzing(true);
     try {
-      // 1. Konversi gambar Base64 menjadi file biner Blob
+      //  Konversi gambar Base64 menjadi file biner Blob
       const imageBlob = dataURLtoBlob(selectedImage);
-​
-      // 2. Masukkan ke dalam FormData sesuai spesifikasi HTTP Multipart Request
+      
       const formData = new FormData();
       formData.append("file", imageBlob, "acne_image.jpg");
 ​
-      // 3. Kirim data menggunakan Axios ke endpoint FastAPI (Port 8000)
       const response = await axios.post(
         `${API_BASE_URL}/predict`,
         formData,
