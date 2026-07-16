@@ -7,10 +7,6 @@ import Guide from "./components/Guide";
 import CameraCapture from "./components/CameraCapture";
 import ResultCard from "./components/ResultCard";
 ​
-// Alamat backend AcneScan (Google Cloud Run).
-// - Saat development lokal: otomatis pakai URL di bawah ini.
-// - Saat deploy di Vercel: set environment variable VITE_API_URL agar mudah diganti
-//   tanpa mengubah kode.
 const API_BASE_URL =
   import.meta.env.VITE_API_URL ||
   "https://acne-scan-api-332600230450.asia-southeast2.run.app";
