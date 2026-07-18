@@ -7,15 +7,11 @@ import Guide from "./components/Guide";
 import CameraCapture from "./components/CameraCapture";
 import ImageCropper from "./components/ImageCropper";
 import ResultCard from "./components/ResultCard";
-<<<<<<< HEAD
-​
-=======
 
 // Alamat backend AcneScan (Google Cloud Run).
 // - Saat development lokal: otomatis pakai URL di bawah ini.
 // - Saat deploy di Vercel: set environment variable VITE_API_URL agar mudah diganti
 //   tanpa mengubah kode.
->>>>>>> 31e9624 (tambah fitur custom crop gambar)
 const API_BASE_URL =
   import.meta.env.VITE_API_URL ||
   "https://acne-scan-api-332600230450.asia-southeast2.run.app";
@@ -39,33 +35,15 @@ function App() {
     }
     return new Blob([u8arr], { type: mime });
   };
-<<<<<<< HEAD
-​
-  // Fungsi mengirim gambar ke FastAPI backend via Axios
-=======
 
   // Fungsi utama untuk mengirim gambar ke FastAPI backend via Axios
->>>>>>> 31e9624 (tambah fitur custom crop gambar)
   const handleStartAnalysis = async () => {
     if (!selectedImage) return;
 
     setIsAnalyzing(true);
     try {
-      //  Konversi gambar Base64 menjadi file biner Blob
+      // 1. Konversi gambar Base64 menjadi file biner Blob
       const imageBlob = dataURLtoBlob(selectedImage);
-<<<<<<< HEAD
-      
-      const formData = new FormData();
-      formData.append("file", imageBlob, "acne_image.jpg");
-​
-      const response = await axios.post(
-        `${API_BASE_URL}/predict`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-=======
 
       // 2. Masukkan ke dalam FormData sesuai spesifikasi HTTP Multipart Request
       const formData = new FormData();
@@ -75,7 +53,6 @@ function App() {
       const response = await axios.post(`${API_BASE_URL}/predict`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
->>>>>>> 31e9624 (tambah fitur custom crop gambar)
         },
       });
 
@@ -152,9 +129,5 @@ function App() {
     </div>
   );
 }
-<<<<<<< HEAD
-​
-=======
 
->>>>>>> 31e9624 (tambah fitur custom crop gambar)
 export default App;
