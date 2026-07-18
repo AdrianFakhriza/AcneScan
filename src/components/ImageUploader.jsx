@@ -1,10 +1,18 @@
 import { useRef } from "react";
-import { UploadCloud, Camera, FolderOpen, X, LoaderCircle } from "lucide-react";
+import {
+  UploadCloud,
+  Camera,
+  FolderOpen,
+  X,
+  Crop,
+  LoaderCircle,
+} from "lucide-react";
 
 const ImageUploader = ({
   image,
   onImageSelect,
   onCameraOpen,
+  onCropOpen,
   onStart,
   isAnalyzing,
 }) => {
@@ -120,6 +128,19 @@ const ImageUploader = ({
                 }`}
               />
 
+              {/* Tombol Crop / sesuaikan gambar (pojok kiri atas preview). */}
+              {!isAnalyzing && (
+                <button
+                  type="button"
+                  onClick={onCropOpen}
+                  className="absolute flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium text-white transition-colors bg-blue-500 rounded-full shadow-md top-2 left-2 hover:bg-blue-600"
+                  title="Crop / sesuaikan area gambar"
+                >
+                  <Crop className="w-3.5 h-3.5" />
+                  Crop
+                </button>
+              )}
+
               {isAnalyzing && (
                 <div className="absolute inset-0 flex items-center justify-center mb-4 rounded-lg bg-white/45 backdrop-blur-[1px]">
                   <div className="flex flex-col items-center gap-2 px-5 py-4 bg-white border border-blue-100 shadow-lg rounded-xl">
@@ -168,7 +189,7 @@ const ImageUploader = ({
             <p className="text-sm font-medium text-blue-600">
               {isAnalyzing
                 ? "Gambar sedang diproses oleh sistem."
-                : "Gambar berhasil dimuat. Siap untuk dianalisis!"}
+                : "Gambar berhasil dimuat. Gunakan Crop bila perlu, lalu analisis!"}
             </p>
           </div>
         )}
