@@ -149,7 +149,7 @@ const ResultCard = ({ result, image, onReset }) => {
               </h3>
               <p className="mb-4 text-sm text-gray-400">
                 Setiap jenis jerawat yang terdeteksi memiliki saran penanganan
-                masing-masing.
+                masing-masing. Saran penangangan telah divalidasi oleh dokter kulit dan beberapa referensi penelitian.
               </p>
 
               {hasDetection ? (
